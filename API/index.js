@@ -51,5 +51,17 @@ endpoint description => {
    let [result,rows] = await db.connection.execute(sql, [req.body.title, req.body.date, req.body.start_time, req.body.end_time, req.body.location, req.body.description, req.body.type, req.body.ID])
      res.status(200).json("row edited");
  });
-
+  /*
+url => /API/events/Show_all
+httpType =>GET
+endpoint description => {
+    endpoint executes the select command from the database connection (select event table), then takes the selected columns (title, date)
+    from the event table and outputs them onto the screen
+}
+*/
+app.get('/API/events/Show_all', async (req, res) => {
+    let sql = "SELECT Title, Date FROM event";
+    let results = await db.connection.execute(sql)
+    res.status(200).json(results[0]);
+});
 
