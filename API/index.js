@@ -65,3 +65,16 @@ app.get('/API/events/Show_all', async (req, res) => {
     res.status(200).json(results[0]);
 });
 
+
+app.delete('/API/events/deleteevent', async (req, res) =>{
+    let sql = "delete from event where ID = ?"
+    let [result,rows] = await db.connection.execute(sql , [req.body.ID])
+    res.status(200).json("Event Successfully Deleted.");
+ });
+
+ app.post('/API/events/addevent', async (req, res) => {
+    //write the nesseary sql stetment
+    let sql = "insert into  event (Title,Date,start_time,end_time,location,description,Type_ID,User_ID) values(?,?,?,?,?,?,?,?);"
+   let [result,rows] = await db.connection.execute(sql, [req.body.title, req.body.date, req.body.start_time, req.body.end_time, req.body.location, req.body.description, req.body.type, req.body.userid])
+     res.status(200).json("Event Successfully create ");
+ });
