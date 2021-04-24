@@ -2,8 +2,19 @@
 const express = require('express');
 //call the express function 
 const app = express();
-//call db module from db.js file
+const cors = require('cors')
+
+var corsOptions = {
+    origin: 'http://localhost:4200'
+  }
+  app.use(cors({
+    origin: '*',
+    credentials: true
+  }));//call db module from db.js file
+
 const db = require('./db');
+
+
 // instance from bodyparser wich used to able us use req.body stetment
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())
@@ -45,7 +56,8 @@ endpoint description => {
     then endpoint take the data  and replace the old_date stored in the data base with the new data comming from the body
 }
 */
- app.put('/API/events/editevent', async (req, res) => {
+app.put('/API/events/editevent', async (req, res) => {
+     
     //write the nesseary sql stetment
     let sql = "update event set Title = ?,Date = ?,start_time =?,end_time=?,location=?,description=?,Type_ID=? where ID = ?"
    let [result,rows] = await db.connection.execute(sql, [req.body.title, req.body.date, req.body.start_time, req.body.end_time, req.body.location, req.body.description, req.body.type, req.body.ID])
@@ -59,9 +71,10 @@ endpoint description => {
     from the event table and outputs them onto the screen
 }
 */
-app.get('/API/events/Show_all', async (req, res) => {
-    let sql = "SELECT Title, Date FROM event";
-    let results = await db.connection.execute(sql)
+app.get('/API/events/Show_all/:id', async (req, res) => {
+    var id = req.params.id;
+    let sql = "SELECT Title, Date,start_time,end_time FROM event where User_ID = ? ";
+    let results =  await db.connection.execute(sql,[id])
     res.status(200).json(results[0]);
 });
 
