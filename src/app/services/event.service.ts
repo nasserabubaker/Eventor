@@ -20,3 +20,9 @@ export class EventService {
   }
 
 }
+export class ScheduleService {
+  constructor(private http: HttpClient) { }
+  addEvent(obj:any){
+    return this.http.post("http://localhost:3000/API/events/addevent", obj)
+  }
+}
