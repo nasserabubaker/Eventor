@@ -8,9 +8,17 @@ import { Injectable } from '@angular/core';
 export class EventService {
 
   constructor(private http: HttpClient) { }
-  getHostedEvents(obj:any) {
-    return this.http.get("http://localhost:3000/API/events/Show_all/" + obj.id);
+  getHostedEvents(id:number) {
+    return this.http.get("http://localhost:3000/API/events/Show_all/" +id);
   }
+  
+  EditEvent(obj:any){
+    return this.http.put("http://localhost:3000/API/events/editevent",obj.id)
+  }
+  getEventsDetails(id: number) {
+    return this.http.get("http://localhost:3000/API/events/get_event/" + id);
+  }
+
 }
 export class ScheduleService {
   constructor(private http: HttpClient) { }

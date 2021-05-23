@@ -73,11 +73,18 @@ endpoint description => {
 */
 app.get('/API/events/Show_all/:id', async (req, res) => {
     var id = req.params.id;
-    let sql = "SELECT Title, Date,start_time,end_time FROM event where User_ID = ? ";
+
+    let sql = "SELECT  ID,Title, Date,start_time,end_time FROM event where User_ID = ? ";
     let results =  await db.connection.execute(sql,[id])
     res.status(200).json(results[0]);
 });
 
+app.get("/API/events/get_event/:id", async (req, res) => {
+    var id = req.params.id;
+    let sql = "select * from event  where ID = ?";
+    let results =  await db.connection.execute(sql,[id])
+    res.status(200).json(results[0]);
+});
 
 app.delete('/API/events/deleteevent', async (req, res) =>{
     let sql = "delete from event where ID = ?"

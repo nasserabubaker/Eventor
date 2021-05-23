@@ -7,16 +7,17 @@ import { EventService } from '../services/event.service';
   templateUrl: './allevents.component.html',
   styleUrls: ['./allevents.component.css']
 })
-export class AlleventsComponent implements OnInit {
+export class AlleventsComponent implements OnInit  {
   events: any = [];
   id = 1;
 
   constructor(private eventserves:EventService) { }
-  ngOnInit(): void {
-    let obj = {
-      id: this.id
-    }
-    this.eventserves.getHostedEvents(obj).subscribe(x => this.events = x);
+  ngOnInit(){
+    this.eventserves.getHostedEvents(this.id).subscribe(x => this.events = x);
   }
+  deleteEvent(date: Date) {
+    let x = new Date()
+    console.log(x>date)
 
+  }
 }
