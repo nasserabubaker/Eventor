@@ -52,6 +52,7 @@ registerLocaleData(en);
     SearchComponent,
     EditComponent,
     SearchCardComponent,
+    
 
   ],
   imports: [
