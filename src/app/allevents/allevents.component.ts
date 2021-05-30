@@ -1,5 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { EventService } from '../services/event.service';
 
 @Component({
@@ -12,12 +13,7 @@ export class AlleventsComponent implements OnInit  {
   id = 1;
 
   constructor(private eventserves:EventService) { }
-  ngOnInit(){
-    this.eventserves.getHostedEvents(this.id).subscribe(x => this.events = x);
-  }
-  deleteEvent(date: Date) {
-    let x = new Date()
-    console.log(x>date)
-
+   async ngOnInit(){
+     this.eventserves.getHostedEvents(this.id).subscribe(x => this.events = x);
   }
 }

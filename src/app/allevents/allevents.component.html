@@ -1,18 +1,19 @@
-<h1 class="main_text">Show All Events</h1>
-<div class="container allevents shadow">
-    <div class="row">
-        <div *ngFor= "let event of events" class="square  col-md-4">
-            <h3 class="event_title">{{event.Title}}</h3>
-            <h4>{{event.Date}}</h4>
-            <div class="time">   
-                <h5>{{event.start_time}} </h5>
-                <h5> - </h5>
-                <h5>{{event.end_time}} </h5>
-            </div>
-            <div class="controls">
-                <button  type="button" routerLink="/edit/{{event.ID}}"  class="btn btn-warning">Edit</button>
-                <button type="button" (click) = "deleteEvent(event.Date)" class="btn btn-danger">Delete</button>
-            </div>
+<div class="cards">
+    <div class="box profile" >
+        <div class="info"  >
+            <h1>All Events</h1>
         </div>
     </div>
+</div>
+
+<div class="view">
+    <div class="container-fluid">
+        <div class="row">
+                <app-card  *ngFor="let event of events" class="col-3 card" [s]="event" ></app-card>
+                <app-card  *ngFor="let event of events" class="col-3 card" [s]="event" ></app-card>
+                <app-card  *ngFor="let event of events" class="col-3 card" [s]="event" ></app-card>
+                <app-card  *ngFor="let event of events" class="col-3 card" [s]="event" ></app-card>
+        </div>
+    </div>
+
 </div>

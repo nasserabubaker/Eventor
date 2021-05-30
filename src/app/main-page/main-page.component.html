@@ -1,5 +1,6 @@
-<div class="main_photo ">
-
+<app-navbar></app-navbar>
+<div *ngIf="show" class="main_photo ">
+    <h1  *ngIf="auth.user$ | async as user" > {{(user.email)}}</h1>
     <div class="left ">
         <div class="logo-holder logo-5">
             <a href="">
@@ -12,7 +13,7 @@
     <div class="right">
     </div>
 </div>
-<div class="whatis">
+<div *ngIf="show" class="whatis">
     <div class="leftwhat">
         <h1 class="header">The future is Eventor</h1>
         <p>From hybrid events to virtual platforms, that is the story behind <strong>Eventor</strong> 
@@ -41,8 +42,7 @@
     <div class="rightwhat"></div>
 </div>
 
-
-<div class="cards">
+<div *ngIf="show" class="cards">
 <p>
     eventor event management app allows you to plan and manage your events on the go, giving you complete control from any location:
 </p>
@@ -63,11 +63,7 @@
 </div>
 </div>
 
-
-
-
-
-<div class="half-layer ">
+<div *ngIf="show" class="half-layer ">
     <div class="container">
         <div class="layer-name logo-holder logo-5">
               <h3>Project Team</h3>

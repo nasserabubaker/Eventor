@@ -1,24 +1,62 @@
-.allevents{
-    padding: 10px;
+:root{
+    --nav:25vw;
 }
-.square{
+html{
+    background-color: white;
+}
+.view{
+    min-height: 50vh;
+    max-height: fit-content;
+    width: calc(100%-var(--nav));
+    margin-left: 25vw;
+}
+.cards{
+    margin-top: 50px;
+    margin-left: 50px;
+    width: calc(100%-var(--nav));
+    margin-left: 25vw;
+}
+.box{
+    transition: box-shadow .3s;
+    padding: 20px;
+    border-radius: 30px;
+    height: 100px;
+    min-width: 300px;
+    background-color: white;
+    max-width: fit-content;
+    margin: 10px auto;
     text-align: center;
-    border-bottom: 1px solid gray;
+    color: gray;
 
 }
-.event_title{
-    color: rgb(85, 83, 83);
-    width: 100%;
+.info > h1{
+    color: gray;
+    font-weight: bolder;
+
 }
-.time{
+.card{
+    min-width: 250px; 
+    min-height: 250px;
+    margin: 10px 0;
+    text-align: center;
+    border: none !important;
+    margin-left: 50px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+}
+
+.title{
+    color: Gray;
+    font-weight: bolder;
+    font-size: x-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.date_info{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    
 }
-.controls{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
+.date {
+    margin: 0 3px;
 }
-.row {
-    margin: 0;
-}
+
